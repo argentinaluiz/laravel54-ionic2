@@ -3,12 +3,14 @@
 namespace CodeFlix\Http\Controllers;
 
 use CodeFlix\Repositories\UserRepository;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Request;
 use Jrean\UserVerification\Traits\VerifiesUsers;
 
 class EmailVerificationController extends Controller
 {
     use VerifiesUsers;
+
+    private $repository;
 
 
     /**
@@ -22,7 +24,7 @@ class EmailVerificationController extends Controller
     public function redirectAfterVerification()
     {
         $this->loginUser();
-        return url('/admin/dashboard');
+        return route('user_settings.edit');
     }
 
     protected function loginUser(){

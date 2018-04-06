@@ -23,7 +23,7 @@
                     ['link' => route('admin.categories.index'), 'title' => 'Categorias'],
                 ];
                 $menus = Navigation::links($arrayLinks);
-                $logout = Navigation::links([
+                $menuRight = Navigation::links([
                     [
                     Auth::user()->name,
                     [
@@ -34,9 +34,13 @@
                                 'onclick'=>"event.preventDefault();document.getElementById(\"form-logout\").submit();"
                             ]
                         ],
+                        [
+                            'link' => route('admin.user_settings.edit'),
+                            'title' => 'Configurações',
+                        ]
                     ]
                 ]])->right();
-                $navbar->withContent($menus)->withContent($logout);
+                $navbar->withContent($menus)->withContent($menuRight);
             }
         ?>
         {!! $navbar !!}
