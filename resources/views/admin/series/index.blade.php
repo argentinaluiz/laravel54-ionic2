@@ -12,7 +12,7 @@
                ->callback('Descrição', function($field,$serie){
                    return MediaObject::withContents(
                        [
-                           'image' => $serie->thumb_small_asset,
+                           'image' => $serie->thumb,
                            'link'  => '#',
                            'heading'  => $serie->title,
                            'body'  => $serie->description
