@@ -43,12 +43,18 @@ class SeriesController extends Controller
      */
     public function create()
     {
-        $form = FormBuilder::create(SerieForm::class, [
-            'url' => route('admin.series.store'),
-            'method' => 'POST'
-        ]);
+        $form = FormBuilder::create(SerieForm::class);
 
-        return view('admin.series.create', compact('form'));
+        if (!$form->isValid()) {
+            return redirect()->back()->withErrors($form->getErrors())->withInput();
+        }
+
+        $data = $form->getFieldValues();
+        $data['thumb'] = env('user_default', "default.png");
+        Model::unguard();
+        $this->repository->create($data);
+        session()->flash('message', 'Série criada com sucesso.');
+        return redirect()->route('admin.series.index');
     }
 
     /**
