@@ -28,6 +28,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(UserRepository::class, UserRepositoryEloquent::class);
         $this->app->bind(\CodeFlix\Repositories\CategoryRepository::class, \CodeFlix\Repositories\CategoryRepositoryEloquent::class);
         $this->app->bind(\CodeFlix\Repositories\SerieRepository::class, \CodeFlix\Repositories\SerieRepositoryEloquent::class);
+        $this->app->bind(\CodeFlix\Repositories\VideoRepository::class, \CodeFlix\Repositories\VideoRepositoryEloquent::class);
         //:end-bindings:
     }
 }

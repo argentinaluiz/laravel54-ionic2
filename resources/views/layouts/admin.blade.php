@@ -22,6 +22,7 @@
                     ['link' => route('admin.users.index'), 'title' => 'Usuário'],
                     ['link' => route('admin.categories.index'), 'title' => 'Categorias'],
                     ['link' => route('admin.series.index'), 'title' => 'Séries'],
+                    ['link' => route('admin.videos.index'), 'title' => 'Videos'],
                 ];
                 $menus = Navigation::links($arrayLinks);
                 $menuRight = Navigation::links([
