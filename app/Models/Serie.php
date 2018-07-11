@@ -3,6 +3,7 @@
 namespace CodeFlix\Models;
 
 use Bootstrapper\Interfaces\TableInterface;
+use CodeFlix\Media\SeriePaths;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Prettus\Repository\Contracts\Transformable;
@@ -12,8 +13,9 @@ class Serie extends Model implements Transformable, TableInterface
 {
     use TransformableTrait;
     use SoftDeletes;
+    use SeriePaths;
 
-    protected $fillable = ['title', 'description'];
+    protected $fillable = ['title', 'description', 'thumb'];
 
     public function getTableHeaders()
     {

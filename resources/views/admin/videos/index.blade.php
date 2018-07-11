@@ -12,8 +12,8 @@
                 ->callback('Descrição', function($field,$video){
                     return MediaObject::withContents(
                         [
-                            'image' => $video->thumb_small_asset,
-                            'link'  => $video->file_asset,
+                            'image' => '//placehold.it/64x64',
+                            'link'  => $video->file,
                             'heading'  => $video->title,
                             'body'  => $video->description
                         ]
@@ -35,7 +35,7 @@
 @push('styles')
     <style type="text/css">
         .media-body{
-            width: 400px;
+            width: auto;
         }
     </style>
 @endpush

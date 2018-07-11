@@ -12,8 +12,10 @@
                ->callback('Descrição', function($field,$serie){
                    return MediaObject::withContents(
                        [
-                           'image' => $serie->thumb,
-                           'link'  => '#',
+                           //'image' => '//placehold.it/64x64',
+                           'image' => $serie->thumb_small_asset,
+                           //'link'  => $serie->file,
+                           'link' => '#',
                            'heading'  => $serie->title,
                            'body'  => $serie->description
                        ]

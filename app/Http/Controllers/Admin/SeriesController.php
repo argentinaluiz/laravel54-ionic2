@@ -42,20 +42,14 @@ class SeriesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
+    {
+        $form = FormBuilder::create(SerieForm::class, [
+            'url' => route('admin.series.store'),
+            'method' => 'POST'
+        ]);
 
-{
-
-    $form = FormBuilder::create(SerieForm::class, [
-
-        'url' => route('admin.series.store'),
-
-        'method' => 'POST'
-
-    ]);
-
-    return view('admin.series.create', compact('form'));
-
-}
+        return view('admin.series.create', compact('form'));
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -72,7 +66,7 @@ class SeriesController extends Controller
         }
 
         $data = $form->getFieldValues();
-        $data['thumb'] = env('THUMBNAIL_DEFAULT', "thumb.jpg");
+        $data['thumb'] = env('user_default');
         Model::unguard();
         $this->repository->create($data);
         session()->flash('message', 'Série criada com sucesso.');
@@ -145,5 +139,14 @@ class SeriesController extends Controller
         session()->flash('message', 'Série excluída com sucesso.');
         return redirect()->route('admin.series.index');
     }
-}
 
+    public function thumbAsset(Serie $serie)
+    {
+        return response()->download($serie->thumb_path);
+    }
+
+    public function thumbSmallAsset(Serie $serie)
+    {
+        return response()->download($serie->thumb_small_path);
+    }
+}
